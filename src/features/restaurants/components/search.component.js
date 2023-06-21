@@ -8,13 +8,17 @@ const SearchContainer = styled.View`
   padding: ${(props) => props.theme.space[3]};
 `;
 
+const SearchInput = styled(Searchbar)`
+  background-color: ${(props) => props.theme.colors.bg.primary};
+`;
+
 export const Search = () => {
   const { keyword, search } = useContext(LocationContext);
   const [searchKeyword, setSearchKeyword] = useState(keyword);
 
   return (
     <SearchContainer>
-      <Searchbar
+      <SearchInput
         placeholder="Search for a location"
         value={searchKeyword}
         onSubmitEditing={() => {
