@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useContext,
-  createContext,
-  useEffect,
-  useMemo,
-} from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 import { LocationContext } from "../location/location.context";
 
