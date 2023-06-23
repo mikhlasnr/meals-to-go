@@ -5,10 +5,11 @@ import styled from "styled-components/native";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { SafeArea } from "../../../components/utility/safe-area.component";
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
+import { FavouritesContext } from "../../../services/favourites/favourites.context";
 
 import { RestaurantInfoCard } from "../components/restaurant-info-card/restaurant-info-card.component";
 import { Search } from "../components/search.component";
-
+import { FavouritesBar } from "../components/favourites/favourites-bar.component";
 const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {
     padding: 16,
@@ -26,6 +27,7 @@ const LoadingContainer = styled.View`
 
 export const RestaurantsScreen = ({ navigation }) => {
   const { isLoading, restaurants } = useContext(RestaurantsContext);
+  const { favourites } = useContext(FavouritesContext);
   return (
     <SafeArea>
       {isLoading && (
@@ -33,7 +35,8 @@ export const RestaurantsScreen = ({ navigation }) => {
           <Loading size={50} animating={true} color={MD2Colors.blue300} />
         </LoadingContainer>
       )}
-      <Search />
+      <Search restaurants={restaurants} />
+      <FavouritesBar favourites={favourites} onNavigate={navigation.navigate} />
       <RestaurantList
         data={restaurants}
         renderItem={({ item }) => {
