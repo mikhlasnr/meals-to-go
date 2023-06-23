@@ -1,7 +1,7 @@
 import React from "react";
 import { ScrollView } from "react-native";
 import { List } from "react-native-paper";
-import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
+import { RestaurantInfoCard } from "../components/restaurant-info-card/restaurant-info-card.component";
 
 import { SafeArea } from "../../../components/utility/safe-area.component";
 
