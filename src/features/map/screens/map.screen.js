@@ -5,6 +5,7 @@ import { LocationContext } from "../../../services/location/location.context";
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 import { Search } from "../components/search.component";
 import { MapCallout } from "../components/map-callout.component";
+import { SafeArea } from "../../../components/utility/safe-area.component";
 const Map = styled(MapView)`
   height: 100%;
   width: 100%;
@@ -28,7 +29,7 @@ export const MapScreen = ({ navigation }) => {
   console.log(restaurants.length && restaurants[0].geometry.location.lat);
 
   return (
-    <>
+    <SafeArea>
       <Search />
       <Map
         region={{
@@ -62,6 +63,6 @@ export const MapScreen = ({ navigation }) => {
             );
           })}
       </Map>
-    </>
+    </SafeArea>
   );
 };
