@@ -15,6 +15,22 @@ import { theme } from "./src/infrastructure/theme";
 import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
 import { LocationContextProvider } from "./src/services/location/location.context";
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
+import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
+
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCeyL9XPUJlzIR1cEmvRCWH7WccxrJ5ai4",
+  authDomain: "meals-to-go-6d526.firebaseapp.com",
+  projectId: "meals-to-go-6d526",
+  storageBucket: "meals-to-go-6d526.appspot.com",
+  messagingSenderId: "1064703074601",
+  appId: "1:1064703074601:web:590e8e6986ca6ad4371738",
+};
+
+initializeApp(firebaseConfig);
+
 export default function App() {
   const [oswaldLoaded] = useOswald({
     Oswald_400Regular,
@@ -31,13 +47,15 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <FavouritesContextProvider>
-          <LocationContextProvider>
-            <RestaurantsContextProvider>
-              <Navigation />
-            </RestaurantsContextProvider>
-          </LocationContextProvider>
-        </FavouritesContextProvider>
+        <AuthenticationContextProvider>
+          <FavouritesContextProvider>
+            <LocationContextProvider>
+              <RestaurantsContextProvider>
+                <Navigation />
+              </RestaurantsContextProvider>
+            </LocationContextProvider>
+          </FavouritesContextProvider>
+        </AuthenticationContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>
