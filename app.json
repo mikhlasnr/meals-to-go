@@ -19,7 +19,21 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#ffffff"
+      },
+      "package": "com.mikhlasnr.mealstogo"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "6800f717-b8d7-4483-8c2a-3c6debb0ad06"
       }
-    }
+    },
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera."
+        }
+      ]
+    ]
   }
 }
