@@ -61,7 +61,7 @@ export const CameraScreen = () => {
         onCameraReady={() => {
           console.log("Camera Ready");
         }}
-      ></ProfileCamera>
+      />
       <CameraButton onPress={snap}>Snap!</CameraButton>
     </CameraContainer>
   );

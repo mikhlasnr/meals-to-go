@@ -1,15 +1,21 @@
 import camelize from "camelize";
-
+import axios from "axios";
 import { locations } from "./location.mock";
 
 export const locationRequest = (searchTerm) => {
-  return new Promise((resolve, reject) => {
-    const locationMock = locations[searchTerm];
-    if (!locationMock) {
-      reject("not found");
-    }
-    resolve(locationMock);
-  });
+  return axios
+    .get(
+      `https://w18vvv2q-5001.asse.devtunnels.ms/meals-to-go-6d526/us-central1/geocode?city=${searchTerm}`
+    )
+    .then(function (response) {
+      return response.data;
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
 };
 
 export const locationTransform = (result) => {
